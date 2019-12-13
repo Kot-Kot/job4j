@@ -23,6 +23,13 @@ public class SqMaxTest {
     @Test
     public void Max3() {
 
+        int result = SqMax.max(10, 100, 1000, 20);
+        assertThat(result, is(1000));
+    }
+
+    @Test
+    public void Max4() {
+
         int result = SqMax.max(10, 100, 10, 20);
         assertThat(result, is(100));
     }

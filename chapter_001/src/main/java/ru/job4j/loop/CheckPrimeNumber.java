@@ -4,7 +4,7 @@ public class CheckPrimeNumber {
     public static boolean check(int finish) {
 
         boolean prime = true;
-        if (finish == 0) {
+        if (finish <= 1) {
             prime = false;
         } else if (finish < 4) {
             prime = true;

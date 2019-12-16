@@ -10,13 +10,13 @@ public class MatrixCheck {
             for (int cell = 0; cell < board.length; cell++) {
                 char sign = board[row][cell];
                 System.out.print(sign);
-
-                if (sign == 'X') {
-                    for (int i = 0; i < board.length; i++){
-                        if (board[i][cell] != sign && board[row][i] != sign){
-                            result = false;
-                            break;
-                        }
+                if (sign == 'X' && (cellNumber == -1 || rowNumber == -1)) {
+                    cellNumber = cell;
+                    rowNumber = row;
+                }else if (sign == 'X') {
+                    if (cellNumber != cell && rowNumber != row){
+                        result = false;
+                        break;
                     }
                 }
             }

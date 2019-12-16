@@ -5,7 +5,7 @@ public class Fitness {
         //Иван за месяц увеличивает силу тяги в 3 раза за счет такой диеты,
         // а Николай - за месяц увеличивает силу тяги в 2 раза.
         int month = 0;
-        while (ivan < nik){
+        while (ivan < nik) {
             month++;
             ivan *= 3;
             nik *= 2;

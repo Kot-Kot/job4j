@@ -13,8 +13,8 @@ public class MatrixCheck {
                 if (sign == 'X' && (cellNumber == -1 || rowNumber == -1)) {
                     cellNumber = cell;
                     rowNumber = row;
-                }else if (sign == 'X') {
-                    if (cellNumber != cell && rowNumber != row){
+                } else if (sign == 'X') {
+                    if (cellNumber != cell && rowNumber != row) {
                         result = false;
                         break;
                     }

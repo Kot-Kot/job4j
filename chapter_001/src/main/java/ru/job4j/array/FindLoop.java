@@ -27,7 +27,7 @@ public class FindLoop {
         int minElem;
         int minElemIndex;
         int tmpElem;
-        for (int i = 0; i < data.length; i++){
+        for (int i = 0; i < data.length; i++) {
             minElem = MinDiapason.findMin(data, i, data.length - 1);
             minElemIndex = FindLoop.indexOfDiapason(data, minElem, i, data.length - 1);
             tmpElem = data[i];

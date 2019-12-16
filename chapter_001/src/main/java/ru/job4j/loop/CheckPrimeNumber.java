@@ -9,8 +9,8 @@ public class CheckPrimeNumber {
         } else if (finish < 4) {
             prime = true;
         } else {
-            for (int i = 2; i < finish; i++){
-                if(finish % i == 0) {
+            for (int i = 2; i < finish; i++) {
+                if (finish % i == 0) {
                     prime = false;
                     break;
                 }

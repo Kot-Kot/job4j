@@ -34,7 +34,6 @@ public class FindLoop {
             data[i] = data[minElemIndex];
             data[minElemIndex] = tmpElem;
         }
-
         return data;
     }
 }

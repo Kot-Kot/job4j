@@ -12,5 +12,4 @@ public class SqArea {
         double result1 = square(6, 2);
         System.out.println(" p = 6, k = 2, s = 2, real = " + result1);
     }
-
 }

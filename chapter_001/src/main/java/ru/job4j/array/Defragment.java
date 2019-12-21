@@ -12,7 +12,6 @@ public class Defragment {
                         break;
                     }
                 }
-
             }
             System.out.print(array[index] + " ");
         }

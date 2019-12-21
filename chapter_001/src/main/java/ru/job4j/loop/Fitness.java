@@ -10,7 +10,6 @@ public class Fitness {
             ivan *= 3;
             nik *= 2;
         }
-
         return month;
     }
 }

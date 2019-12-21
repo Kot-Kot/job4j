@@ -15,8 +15,6 @@ public class DummyBot {
         System.out.println("Пока. = " + DummyBot.answer("Пока."));
         System.out.println("Как оно = " + DummyBot.answer("Как оно"));
     }
-
-
 }
 
 

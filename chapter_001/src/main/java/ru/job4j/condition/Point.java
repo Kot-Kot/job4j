@@ -18,6 +18,10 @@ public class Point {
         return sqrt(pow(this.x - that.x, 2) + pow(this.y - that.y, 2));
     }
 
+    public void info() {
+        System.out.println(String.format("Point[%s, %s]", this.x, this.y));
+    }
+
     public static void main(String[] args) {
         Point a = new Point(0, 0);
         Point b = new Point(0, 2);

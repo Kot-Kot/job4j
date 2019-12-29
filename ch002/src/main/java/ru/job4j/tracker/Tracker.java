@@ -39,20 +39,7 @@ public class Tracker {
      * @return Список всех заявок (исключая null).
      */
     public Item[] findAll() {
-        Item[] itemsWithoutNull = new Item[this.items.length];
-        int size = 0;
-        for (int index = 0; index < this.items.length; index++) {
-            Item item = this.items[index];
-            if (item != null) {
-                itemsWithoutNull[size] = item;
-                size++;
-            }
-        }
-        itemsWithoutNull = Arrays.copyOf(itemsWithoutNull, size);
-        for (int index = 0; index < itemsWithoutNull.length; index++) {
-            System.out.println(itemsWithoutNull[index]);
-        }
-        return itemsWithoutNull;
+        return Arrays.copyOf(items, position);
     }
 
     /**

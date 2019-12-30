@@ -1,9 +1,14 @@
 package ru.job4j.tracker;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Random;
 
 public class Tracker {
+    public Item[] getItems() {
+        return items;
+    }
+
      /**
      * Массив для хранения заявок.
      */
@@ -25,12 +30,45 @@ public class Tracker {
     }
 
     /**
+     * Метод удаляет заявку по названию
+     * @return Массив удаленных item
+     */
+    public Item[] delete(String name) {
+        int count = 0;
+        Item[] deletedItems = new Item[position];
+        System.out.println("deletedItems = " + Arrays.toString(deletedItems));
+
+        for (int i = 0; i < position; i++) {
+            if (items[i] != null && items[i].getName().equals(name)) {
+                deletedItems[count] = items[i];
+                System.out.println("deletedItems = " + Arrays.toString(deletedItems));
+                count++;
+                items[i] = null;
+                for (int j = i + 1; j < position; j++) {
+                    items[j - 1] = items[j];
+                    items[j] = null;
+                }
+            }
+        }
+        position -= count;
+        return  Arrays.copyOf(deletedItems, count);
+    }
+
+    /**
+     * Метод изменяет название заявки
+     */
+    public void replaceName(String name, int pos) {
+        items[pos].setName(name);
+    }
+
+    /**
      * Метод генерирует уникальный ключ для заявки.
      * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
      * @return Уникальный ключ.
      */
     private String generateId() {
-        return String.valueOf(System.currentTimeMillis());
+        Random r = new Random();
+        return String.valueOf(System.currentTimeMillis() + r.nextInt());
     }
 
 
@@ -72,13 +110,25 @@ public class Tracker {
         //int size = 0;
         for (int index = 0; index < this.items.length; index++) {
             Item item = this.items[index];
-            if (item.getId().equals(id)) {
+            if (item != null && item.getId().equals(id)) {
                 result = item;
                 System.out.println(result.getId() + " : " + result.getName());
                 break;
             }
         }
         return result;
+    }
+    /**
+     * Метод для вывода в консоль элементов массива Item[].
+     */
+    public void print(Item[] itemList) {
+        for (int i = 0; i < itemList.length; i++) {
+            if (itemList[i] != null) {
+                System.out.println("Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
+            } else {
+                System.out.println(i + " element is NULL");
+            }
+        }
     }
 
 

@@ -29,28 +29,21 @@ public class StartUI {
             } else if (select == 2) {
                 System.out.println("=== Edit item ====");
                 System.out.println("Enter item's name for changing: ");
-                String name = scanner.nextLine();
-                Item[] itemList = tracker.findAll();
-                int replacementCount = 0;
-                for (int i = 0; i < itemList.length; i++) {
-                    if (itemList[i].getName().equals(name)) {
-                        replacementCount++;
-                        System.out.println("Enter new name for the item : " + itemList[i].getName());
-                        String newName = scanner.nextLine();
-                        itemList[i].setName(newName);
-                        System.out.println("New name for the item : " + itemList[i].getName());
-                    }
-                }
-                if (replacementCount == 0) {
+                String oldName = scanner.nextLine();
+                System.out.println("Enter item's new name: ");
+                String newName = scanner.nextLine();
+                if (tracker.replace(oldName, newName)) {
+                    System.out.println("Item(s) has been edited");
+                } else {
                     System.out.println("Needed item was not found");
                 }
             } else if (select == 3) {
                 System.out.println("=== Delete item ====");
                 System.out.println("Enter item's name for deleting: ");
                 String name = scanner.nextLine();
-                Item[] deletedItems = tracker.delete(name);
-                if (deletedItems != null) {
-                    System.out.println("Item(s) has been deleted");
+                Item deletedItem = tracker.delete(name);
+                if (deletedItem != null) {
+                    System.out.println("Item has been deleted");
                 } else {
                     System.out.println("Item has not found");
                 }

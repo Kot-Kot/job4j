@@ -29,13 +29,12 @@ public class Tracker {
      * Метод удаляет заявку по названию
      * @return Массив удаленных item
      */
-    public Item[] delete(String name) {
-        Item[] result;
+    public Item delete(String name) {
         int count = 0;
-        Item[] deletedItems = new Item[position];
+        Item deletedItem = null;
         for (int i = 0; i < position; i++) {
             if (items[i] != null && items[i].getName().equals(name)) {
-                deletedItems[count] = items[i];
+                deletedItem = items[i];
                 count++;
                 items[i] = null;
                 for (int j = i + 1; j < position; j++) {
@@ -44,20 +43,24 @@ public class Tracker {
                 }
             }
         }
-        if (count == 0) {
-            result = null;
-        } else {
-          result = Arrays.copyOf(deletedItems, count);
-        }
         position -= count;
-        return result;
+        return deletedItem;
     }
 
     /**
      * Метод изменяет название заявки
      */
-    public void replaceName(String name, int pos) {
-        items[pos].setName(name);
+    public boolean replace(String oldName, String newName) {
+        boolean isReplaced = false;
+        int replacementCount = 0;
+        Item[] activeItems = this.findAll();
+        for (int i = 0; i < activeItems.length; i++) {
+            if (activeItems[i].getName().equals(oldName)) {
+                isReplaced = true;
+                activeItems[i].setName(newName);
+            }
+        }
+        return isReplaced;
     }
 
     /**

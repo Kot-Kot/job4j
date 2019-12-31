@@ -5,10 +5,6 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Tracker {
-    public Item[] getItems() {
-        return items;
-    }
-
      /**
      * Массив для хранения заявок.
      */
@@ -34,14 +30,12 @@ public class Tracker {
      * @return Массив удаленных item
      */
     public Item[] delete(String name) {
+        Item[] result;
         int count = 0;
         Item[] deletedItems = new Item[position];
-        System.out.println("deletedItems = " + Arrays.toString(deletedItems));
-
         for (int i = 0; i < position; i++) {
             if (items[i] != null && items[i].getName().equals(name)) {
                 deletedItems[count] = items[i];
-                System.out.println("deletedItems = " + Arrays.toString(deletedItems));
                 count++;
                 items[i] = null;
                 for (int j = i + 1; j < position; j++) {
@@ -50,8 +44,13 @@ public class Tracker {
                 }
             }
         }
+        if (count == 0) {
+            result = null;
+        } else {
+          result = Arrays.copyOf(deletedItems, count);
+        }
         position -= count;
-        return  Arrays.copyOf(deletedItems, count);
+        return result;
     }
 
     /**
@@ -95,9 +94,6 @@ public class Tracker {
             }
         }
         itemsByName = Arrays.copyOf(itemsByName, size);
-        for (int index = 0; index < itemsByName.length; index++) {
-            System.out.println(itemsByName[index]);
-        }
         return itemsByName;
     }
 
@@ -124,7 +120,7 @@ public class Tracker {
     public void print(Item[] itemList) {
         for (int i = 0; i < itemList.length; i++) {
             if (itemList[i] != null) {
-                System.out.println("Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
+                System.out.println(i + ". " + "Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
             } else {
                 System.out.println(i + " element is NULL");
             }

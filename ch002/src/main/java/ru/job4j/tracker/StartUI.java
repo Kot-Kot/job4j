@@ -19,40 +19,61 @@ public class StartUI {
             } else if (select == 1) {
                 System.out.println("=== List of all items ====");
                 Item[] itemList = tracker.findAll();
-                tracker.print(itemList);
+                for (int i = 0; i < itemList.length; i++) {
+                    if (itemList[i] != null) {
+                        System.out.println(i + ". " + "Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
+                    } else {
+                        System.out.println(i + " element is NULL");
+                    }
+                }
             } else if (select == 2) {
                 System.out.println("=== Edit item ====");
                 System.out.println("Enter item's name for changing: ");
                 String name = scanner.nextLine();
                 Item[] itemList = tracker.findAll();
+                int replacementCount = 0;
                 for (int i = 0; i < itemList.length; i++) {
                     if (itemList[i].getName().equals(name)) {
+                        replacementCount++;
                         System.out.println("Enter new name for the item : " + itemList[i].getName());
                         String newName = scanner.nextLine();
                         itemList[i].setName(newName);
                         System.out.println("New name for the item : " + itemList[i].getName());
                     }
                 }
+                if (replacementCount == 0) {
+                    System.out.println("Needed item was not found");
+                }
             } else if (select == 3) {
                 System.out.println("=== Delete item ====");
                 System.out.println("Enter item's name for deleting: ");
                 String name = scanner.nextLine();
-                Item[] itemList = tracker.delete(name);
-                tracker.print(itemList);
-                System.out.println();
-                tracker.print(tracker.findAll());
+                Item[] deletedItems = tracker.delete(name);
+                if (deletedItems != null) {
+                    System.out.println("Item(s) has been deleted");
+                } else {
+                    System.out.println("Item has not found");
+                }
+
             } else if (select == 4) {
                 System.out.println("===  Find item by Id ====");
                 System.out.println("Enter item's Id to search: ");
                 String id = scanner.nextLine();
-                System.out.println("Item's name: " + tracker.findById(id).getName());
+                if (tracker.findById(id) == null) {
+                    System.out.println("Item has not found");
+                }
             } else if (select == 5) {
                 System.out.println("===   Find items by name ====");
                 System.out.println("Enter item's name to search: ");
                 String name = scanner.nextLine();
                 Item[] itemList = tracker.findByName(name);
-                tracker.print(itemList);
-
+                for (int i = 0; i < itemList.length; i++) {
+                    if (itemList[i] != null) {
+                        System.out.println(i + ". " + "Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
+                    } else {
+                        System.out.println(i + " element is NULL");
+                    }
+                }
             } else if (select == 6) {
                 run = false;
             }
@@ -74,11 +95,11 @@ public class StartUI {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Tracker tracker = new Tracker();
-        tracker.add(new Item("item1"));
-        tracker.add(new Item("item2"));
-        tracker.add(new Item("item3"));
-        tracker.add(new Item("item5"));
-        tracker.add(new Item("item1"));
+        tracker.add(new Item("i1"));
+        tracker.add(new Item("i2"));
+        tracker.add(new Item("i3"));
+        tracker.add(new Item("i5"));
+        tracker.add(new Item("i1"));
         new StartUI().init(scanner, tracker);
     }
 }

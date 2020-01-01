@@ -20,11 +20,7 @@ public class StartUI {
                 System.out.println("=== List of all items ====");
                 Item[] itemList = tracker.findAll();
                 for (int i = 0; i < itemList.length; i++) {
-                    if (itemList[i] != null) {
-                        System.out.println(i + ". " + "Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
-                    } else {
-                        System.out.println(i + " element is NULL");
-                    }
+                    System.out.println(i + ". " + "Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
                 }
             } else if (select == 2) {
                 System.out.println("=== Edit item ====");
@@ -38,10 +34,10 @@ public class StartUI {
                     System.out.println("Needed item was not found");
                 }
             } else if (select == 3) {
-                System.out.println("=== Delete item ====");
-                System.out.println("Enter item's name for deleting: ");
-                String name = scanner.nextLine();
-                Item deletedItem = tracker.delete(name);
+                System.out.println("=== Delete item by Id ====");
+                System.out.println("Enter item's Id for deleting: ");
+                String id = scanner.nextLine();
+                Item deletedItem = tracker.delete(id);
                 if (deletedItem != null) {
                     System.out.println("Item has been deleted");
                 } else {
@@ -52,8 +48,11 @@ public class StartUI {
                 System.out.println("===  Find item by Id ====");
                 System.out.println("Enter item's Id to search: ");
                 String id = scanner.nextLine();
-                if (tracker.findById(id) == null) {
+                Item item = tracker.findById(id);
+                if (item == null) {
                     System.out.println("Item has not found");
+                } else {
+                    System.out.println(item.getId() + " : " + item.getName());
                 }
             } else if (select == 5) {
                 System.out.println("===   Find items by name ====");
@@ -63,8 +62,6 @@ public class StartUI {
                 for (int i = 0; i < itemList.length; i++) {
                     if (itemList[i] != null) {
                         System.out.println(i + ". " + "Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
-                    } else {
-                        System.out.println(i + " element is NULL");
                     }
                 }
             } else if (select == 6) {

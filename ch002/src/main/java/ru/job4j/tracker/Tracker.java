@@ -29,11 +29,11 @@ public class Tracker {
      * Метод удаляет заявку по названию
      * @return Массив удаленных item
      */
-    public Item delete(String name) {
+    public Item delete(String id) {
         int count = 0;
         Item deletedItem = null;
         for (int i = 0; i < position; i++) {
-            if (items[i] != null && items[i].getName().equals(name)) {
+            if (items[i] != null && items[i].getId().equals(id)) {
                 deletedItem = items[i];
                 count++;
                 items[i] = null;
@@ -111,7 +111,6 @@ public class Tracker {
             Item item = this.items[index];
             if (item != null && item.getId().equals(id)) {
                 result = item;
-                System.out.println(result.getId() + " : " + result.getName());
                 break;
             }
         }
@@ -124,8 +123,6 @@ public class Tracker {
         for (int i = 0; i < itemList.length; i++) {
             if (itemList[i] != null) {
                 System.out.println(i + ". " + "Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
-            } else {
-                System.out.println(i + " element is NULL");
             }
         }
     }

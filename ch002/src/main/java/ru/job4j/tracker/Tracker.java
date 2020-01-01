@@ -37,10 +37,7 @@ public class Tracker {
                 deletedItem = items[i];
                 count++;
                 items[i] = null;
-                for (int j = i + 1; j < position; j++) {
-                    items[j - 1] = items[j];
-                    items[j] = null;
-                }
+                System.arraycopy(items, i + 1, items, i, position - i);
             }
         }
         position -= count;
@@ -53,8 +50,8 @@ public class Tracker {
     public boolean replace(String oldName, String newName) {
         boolean isReplaced = false;
         int replacementCount = 0;
-        Item[] activeItems = this.findAll();
-        for (int i = 0; i < activeItems.length; i++) {
+        Item[] activeItems = items;
+        for (int i = 0; i < position; i++) {
             if (activeItems[i].getName().equals(oldName)) {
                 isReplaced = true;
                 activeItems[i].setName(newName);

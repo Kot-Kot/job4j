@@ -27,25 +27,28 @@ public class Tracker {
 
     /**
      * Метод удаляет заявку по названию
+     * @param id идентификатор заявки
      * @return Массив удаленных item
      */
     public Item delete(String id) {
-        int count = 0;
         Item deletedItem = null;
         for (int i = 0; i < position; i++) {
             if (items[i] != null && items[i].getId().equals(id)) {
                 deletedItem = items[i];
-                count++;
                 items[i] = null;
                 System.arraycopy(items, i + 1, items, i, position - i);
+                break;
             }
         }
-        position -= count;
+        position--;
         return deletedItem;
     }
 
     /**
      * Метод изменяет название заявки
+     * @param oldName старое имя заявки
+     * @param newName новое имя заявки
+     * @return True - заявка удалена, false - заявка не найдена
      */
     public boolean replace(String oldName, String newName) {
         boolean isReplaced = false;

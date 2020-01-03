@@ -1,7 +1,5 @@
 package ru.job4j.tracker;
 
-import java.util.Scanner;
-
 public class StartUI {
 
     public static void createItem(Input input, Tracker tracker) {
@@ -19,11 +17,11 @@ public class StartUI {
         }
     }
 
-    public static void editItem(Input input, Tracker tracker) {
+    public static void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ====");
-        String oldName = input.askStr("Enter item's name for changing: ");
+        String id = input.askStr("Enter item's id for changing: ");
         String newName = input.askStr("Enter item's new name: ");
-        if (tracker.replace(oldName, newName)) {
+        if (tracker.replace(id, newName)) {
             System.out.println("Item(s) has been edited");
         } else {
             System.out.println("Needed item was not found");
@@ -73,7 +71,7 @@ public class StartUI {
             } else if (select == 1) {
                 StartUI.showItems(input, tracker);
             } else if (select == 2) {
-                StartUI.editItem(input, tracker);
+                StartUI.replaceItem(input, tracker);
             } else if (select == 3) {
                 StartUI.deleteItem(input, tracker);
             } else if (select == 4) {

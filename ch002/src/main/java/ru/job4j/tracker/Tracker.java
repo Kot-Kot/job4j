@@ -46,16 +46,16 @@ public class Tracker {
 
     /**
      * Метод изменяет название заявки
-     * @param oldName старое имя заявки
+     * @param id id заявки
      * @param newName новое имя заявки
      * @return True - заявка удалена, false - заявка не найдена
      */
-    public boolean replace(String oldName, String newName) {
+    public boolean replace(String id, String newName) {
         boolean isReplaced = false;
         int replacementCount = 0;
         Item[] activeItems = items;
         for (int i = 0; i < position; i++) {
-            if (activeItems[i].getName().equals(oldName)) {
+            if (activeItems[i].getId().equals(id)) {
                 isReplaced = true;
                 activeItems[i].setName(newName);
             }

@@ -12,7 +12,7 @@ public class FindItemByNameAction implements UserAction {
         Item[] itemList = tracker.findByName(name);
         for (int i = 0; i < itemList.length; i++) {
             if (itemList[i] != null) {
-                System.out.println(i + ". " + "Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
+                System.out.println("Id : " + itemList[i].getId() + "; Name : " + itemList[i].getName());
             }
         }
         return true;

@@ -47,42 +47,4 @@ public class StartUITest {
         boolean expect = action.isCall();
         assertThat(true, is(expect));
     }
-
-    @Test
-    public void whenNFE() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream def = System.out;
-        System.setOut(new PrintStream(out));
-        ValidateStubInput input = new ValidateStubInput(
-                new String[] {"АВС"}
-        );
-        StubAction stubAction = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[] { stubAction });
-        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add("Menu.")
-                .add("0. Stub action")
-                .add("Please enter validate data again ")
-                .toString();
-        assertThat(new String(out.toByteArray()), is(expect));
-        System.setOut(def);
-    }
-
-    @Test
-    public void whenNPE() {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        PrintStream def = System.out;
-        System.setOut(new PrintStream(out));
-        ValidateStubInput input = new ValidateStubInput(
-                new String[] {"10"}
-        );
-        StubAction stubAction = new StubAction();
-        new StartUI().init(input, new Tracker(), new UserAction[] { stubAction });
-        String expect = new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                .add("Menu.")
-                .add("0. Stub action")
-                .add("Please select key from menu ")
-                .toString();
-        assertThat(new String(out.toByteArray()), is(expect));
-        System.setOut(def);
-    }
 }

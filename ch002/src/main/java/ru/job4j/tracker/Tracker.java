@@ -3,13 +3,14 @@ package ru.job4j.tracker;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Tracker {
      /**
      * Массив для хранения заявок.
      */
-    private final ArrayList<Item> items = new ArrayList<>();
+    private final List<Item> items = new ArrayList<>();
 
     /**
      * Указатель ячейки для новой заявки.
@@ -77,7 +78,7 @@ public class Tracker {
      * Метод для получения списка всех заявок.
      * @return Список всех заявок (исключая null).
      */
-    public ArrayList<Item> findAll() {
+    public List<Item> findAll() {
         return items;
     }
 

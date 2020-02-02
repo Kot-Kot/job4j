@@ -7,7 +7,7 @@ import org.junit.Test;
 public class FitTest {
 
     @Test
-    public void manWeight(){
+    public void manWeight() {
         int in = 180;
         double expected = 92;
         double out = Fit.manWeight(in);
@@ -15,7 +15,7 @@ public class FitTest {
     }
 
     @Test
-    public void womanWeight(){
+    public void womanWeight() {
         int in = 150;
         double expected = 46;
         double out = Fit.womanWeight(in);

@@ -6,7 +6,7 @@ import org.junit.Test;
 public class SqAreaTest {
 
     @Test
-    public void square(){
+    public void square() {
         int in1 = 6;
         int in2 = 2;
         double expected = 2;
@@ -15,7 +15,7 @@ public class SqAreaTest {
     }
 
     @Test
-    public void square1(){
+    public void square1() {
         int in1 = 20;
         int in2 = 1;
         double expected = 25;
@@ -24,7 +24,7 @@ public class SqAreaTest {
     }
 
     @Test
-    public void square2(){
+    public void square2() {
         int in1 = 0;
         int in2 = 0;
         double expected = 0;

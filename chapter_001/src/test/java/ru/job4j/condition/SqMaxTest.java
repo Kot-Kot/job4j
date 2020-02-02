@@ -7,28 +7,28 @@ import static org.junit.Assert.assertThat;
 
 public class SqMaxTest {
     @Test
-    public void Max1() {
+    public void max1() {
 
         int result = SqMax.max(1, 2, 4, 5);
         assertThat(result, is(5));
     }
 
     @Test
-    public void Max2() {
+    public void max2() {
 
         int result = SqMax.max(10, 9, 8, 7);
         assertThat(result, is(10));
     }
 
     @Test
-    public void Max3() {
+    public void max3() {
 
         int result = SqMax.max(10, 100, 1000, 20);
         assertThat(result, is(1000));
     }
 
     @Test
-    public void Max4() {
+    public void max4() {
 
         int result = SqMax.max(10, 100, 10, 20);
         assertThat(result, is(100));

@@ -26,21 +26,21 @@ public class MultiMaxTest {
     }
 
     @Test
-    public void Case1() {
+    public void case1() {
         MultiMax check = new MultiMax();
         int result = check.max(10, 10, 100);
         assertThat(result, is(100));
     }
 
     @Test
-    public void Case2() {
+    public void case2() {
         MultiMax check = new MultiMax();
         int result = check.max(10, 10, 10);
         assertThat(result, is(10));
     }
 
     @Test
-    public void Case3() {
+    public void case3() {
         MultiMax check = new MultiMax();
         int result = check.max(1, 10, 1);
         assertThat(result, is(10));

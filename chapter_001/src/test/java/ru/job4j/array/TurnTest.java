@@ -7,7 +7,7 @@ import static org.junit.Assert.assertThat;
 
 public class TurnTest {
     @Test
-    public void Turn1() {
+    public void turn1() {
         Turn turn = new Turn();
         int[] input = new int[] {1, 2, 3};
         int[] result = turn.back(input);
@@ -16,7 +16,7 @@ public class TurnTest {
     }
 
     @Test
-    public void Turn2() {
+    public void turn2() {
         Turn turn = new Turn();
         int[] input = new int[] {1, 2, 3, 4};
         int[] result = turn.back(input);

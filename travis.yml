@@ -3,6 +3,10 @@ language: java
 jdk:
   - openjdk13
 
+env:
+  global:
+    - CODECOV_TOKEN="2358c45c-876f-4d4a-b20b-a8e37414b058"
+
 # используем режим обычного пользователя для сборки проекта.
 sudo: false
 
@@ -15,10 +19,7 @@ after_success:
 notifications:
   email:
     recipients:
-      -avgyst-1888@yandex.ru
+      - avgyst-1888@yandex.ru
     on_success: never # default: change
     on_failure: always # default: always
 
-env:
-  global:
-    - CODECOV_TOKEN="2358c45c-876f-4d4a-b20b-a8e37414b058"

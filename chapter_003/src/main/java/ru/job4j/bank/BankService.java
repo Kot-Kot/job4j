@@ -61,14 +61,18 @@ public class BankService {
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
         Account destAccount = findByRequisite(destPassport, destRequisite);
 
-        if (srcAccount != null && destAccount != null && srcAccount.getBalance() - amount >= 0) {
-            System.out.println("srcAccount.getBalance() 1 : " + srcAccount.getBalance());
+        if (isEnoughMoney(srcAccount, destAccount, amount)) {
             srcAccount.setBalance(srcAccount.getBalance() - amount);
-            System.out.println("srcAccount.getBalance() 2 : " + srcAccount.getBalance());
-            System.out.println("destAccount.getBalance() 1 : " + destAccount.getBalance());
             destAccount.setBalance(destAccount.getBalance() + amount);
-            System.out.println("destAccount.getBalance() 2 : " + destAccount.getBalance());
             rsl = true;
+        }
+        return rsl;
+    }
+
+    public boolean isEnoughMoney(Account srcAccount, Account destAccount, double amount) {
+        boolean rsl = false;
+        if (srcAccount != null && destAccount != null && srcAccount.getBalance() - amount >= 0) {
+          rsl = true;
         }
         return rsl;
     }

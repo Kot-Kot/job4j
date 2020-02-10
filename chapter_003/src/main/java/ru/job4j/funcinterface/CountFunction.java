@@ -1,17 +1,13 @@
 package ru.job4j.funcinterface;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class CountFunction {
-    //BiFunction<Double, Double, List<Double>> linear = (a, b) -> {return a * b;};
-
-    //public interface LinearFunction() {
-        //double calculate ( double x);
-    //}
         List<Double> diapason(int start, int end, Function<Double, Double> func) {
-        List<Double> result = null;
+        List<Double> result = new ArrayList<>();
         for (int i = start; i <= end; i++) {
             result.add(func.apply((double) i));
         }

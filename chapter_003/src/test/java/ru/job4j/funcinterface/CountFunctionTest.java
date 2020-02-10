@@ -16,7 +16,7 @@ public class CountFunctionTest {
     @Test
     public void linearFunction() {
         CountFunction function = new CountFunction();
-        List<Double> result = function.diapason(5, 8, x -> 2 * x + 1);
+        List<Double> result = function.diapason(5, 7, x -> 2 * x + 1);
         List<Double> expected = Arrays.asList(11D, 13D, 15D);
         assertThat(result, is(expected));
     }

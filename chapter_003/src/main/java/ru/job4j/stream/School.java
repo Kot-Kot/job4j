@@ -15,7 +15,7 @@ public class School {
         return result;
     }
     Map<String, Integer> studentMap(List<Student> students) {
-        Map<String, Integer> result = students.stream().collect(
+        Map<String, Integer> result = students.stream().distinct().collect(
                 Collectors.toMap(Student::getName, Student::getScore));
         return result;
     }
@@ -25,11 +25,13 @@ public class School {
         Student s2 = new Student("kolya", 80);
         Student s3 = new Student("dima", 50);
         Student s4 = new Student("misha", 40);
+        Student s5 = new Student("misha", 40);
         List<Student> list = new ArrayList<>();
         list.add(s1);
         list.add(s2);
         list.add(s3);
         list.add(s4);
+        list.add(s5);
         System.out.println(new School().studentMap(list).toString());
 
         

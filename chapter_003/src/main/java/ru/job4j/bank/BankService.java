@@ -2,6 +2,7 @@ package ru.job4j.bank;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
@@ -36,7 +37,8 @@ public class BankService {
                     .stream()
                     .filter(map -> map.getKey().equals(neededUser))
                     .map(Map.Entry::getValue)
-                    .map(map -> map.get(0))
+                    .flatMap(List::stream)
+                    //.map(map -> map.get(1))
                     .filter(a -> a.getRequisite().equals(requisite))
                     .findAny()
                     .orElse(null);

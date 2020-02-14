@@ -38,7 +38,7 @@ public class BankServiceTest {
         bank.addAccount("1000", new Account("150",1000));
         bank.addAccount("1000", new Account("180",2000));
 
-        assertThat(bank.findByRequisite("1000", "120"), is(new Account("120",100)));
+        assertThat(bank.findByRequisite("1000", "150"), is(new Account("150",1000)));
     }
 
     @Test

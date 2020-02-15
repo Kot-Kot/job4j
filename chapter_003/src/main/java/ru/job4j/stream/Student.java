@@ -1,62 +1,30 @@
 package ru.job4j.stream;
 
-import java.util.Objects;
+import java.util.Set;
 
-public class Student implements Comparable<Student> {
+public class Student {
     private String name;
-    private int score;
+    private Set<String> units;
 
-    public Student(String name, int score) {
+    public Student(String name, Set<String> units) {
         this.name = name;
-        this.score = score;
+        this.units = units;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Set<String> getUnits() {
+        return units;
     }
 
-    public int getScore() {
-        return score;
-    }
+    static class Holder {
+        String key, value;
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", score=" + score +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Student student = (Student) o;
-        return score == student.score &&
-                Objects.equals(name, student.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, score);
-    }
-
-    @Override
-    public int compareTo(Student o) {
-        if (this.getScore() < o.getScore()) {
-            return 1;
-        } else if (this.getScore() > o.getScore()) {
-            return -1;
-        } else {
-            return 0;
+        Holder(String key, String value) {
+            this.key = key;
+            this.value = value;
         }
     }
 }
